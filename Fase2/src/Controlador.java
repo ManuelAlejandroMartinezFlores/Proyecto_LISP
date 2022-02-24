@@ -1,4 +1,14 @@
-
+/**
+ * 
+ * @author Manuel Alejandro Martínez Flores
+ * @author Mario Puente
+ * @author Pedro Marroquín
+ * 
+ * Controlador.
+ * Clase que contiene el método main.
+ * Debe ser ejecutada para correr el intérprete
+ *
+ */
 public class Controlador {
 
 	public static void main(String[] args) {
@@ -11,6 +21,7 @@ public class Controlador {
 		while (true) {
 			vista.mostrarMensaje("\n*");
 			exp = vista.leerExpresion();
+			// 'Q' cierrra el programa
 			if (exp.equals("Q")) {
 				break;
 			}
