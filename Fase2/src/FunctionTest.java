@@ -1,3 +1,14 @@
+/**
+ * 
+ * @author Manuel Alejandro Martínez Flores
+ * @author Mario Puente
+ * @author Pedro Marroquín
+ * 
+ * FunctionTest.
+ * Evalua las funciones.
+ *
+ */
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -34,7 +45,7 @@ class FunctionTest {
 		Function func = new Function(se, n_vars);
 		assertEquals(func.evaluar(tokens, null).getData(), "4");
 		
-		
+		// (func 5 2)
 		ArrayList<Node> tokens2 = new ArrayList<Node>();
 		tokens2.add(new Atom(5));
 		tokens2.add(new Atom(2));
