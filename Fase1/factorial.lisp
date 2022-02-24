@@ -1,4 +1,1 @@
-(defun factorial (n)
-    (if (<= n 0)
-        1
-        (* n (factorial (- n 1)))))
+(defun factorial (n) (cond ((= n 0) 1) (T (* n (factorial (- n 1))))))

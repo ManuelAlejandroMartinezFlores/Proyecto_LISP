@@ -1,6 +1,1 @@
-(defun fibonacci (n)
-    (if (<= n 0)
-        0
-        (if (= n 1)
-            1
-            (+ (fibonacci (- n 1)) (fibonacci (- n 2))))))
+(defun fibonacci (n) (cond ((= n 1) 1) ((= n 2) 1) (T (+ (fibonacci (- n 1)) (fibonacci (- n 2))))))
