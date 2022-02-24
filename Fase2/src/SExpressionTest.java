@@ -1,3 +1,14 @@
+/**
+ * 
+ * @author Manuel Alejandro Martínez Flores
+ * @author Mario Puente
+ * @author Pedro Marroquín
+ * 
+ * SExpressionTest.
+ * Evalua la construcción y evaluación de expresiones.
+ *
+ */
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
