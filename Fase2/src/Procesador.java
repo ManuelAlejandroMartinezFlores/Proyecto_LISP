@@ -1,11 +1,32 @@
+/**
+ * 
+ * @author Manuel Alejandro Martínez Flores
+ * @author Mario Puente
+ * @author Pedro Marroquín
+ * 
+ * Procesador.
+ * Procesa una expresión de texto y la convierte en una estructura de árbol de Nodos
+ *
+ */
+
 import java.util.ArrayList;
 
 public class Procesador {
 	
+	/**
+	 * Evalua la expresión de texto en formato LISP
+	 * @param expresion
+	 * @return resultado
+	 */
 	public static String evaluate(String expresion) {
 		return procesarEX(expresion).evaluate().getData();
 	}
 
+	/**
+	 * Revisa que la cantidad de párentesis sea correcta
+	 * @param expresion
+	 * @return true - correcto / false - incorrecto
+	 */
 	public static boolean revisarParen(String expresion) {
 		char[] data = expresion.toCharArray();
 		int abiertos = 0;
@@ -22,6 +43,11 @@ public class Procesador {
 		return abiertos == 0;
 	}
 	
+	/**
+	 * Convierte la expresión de texto en un árbol de Nodos
+	 * @param expresion
+	 * @return árbol de Nodos
+	 */
 	public static Node procesarEX(String expresion){
 		assert(Procesador.revisarParen(expresion));
 		expresion = casosEsp(expresion);
@@ -64,6 +90,11 @@ public class Procesador {
 		return new SExpression(data);
 	}
 	
+	/**
+	 * Sustituye casos especiales en el texto
+	 * @param exp
+	 * @return texto modificado
+	 */
 	public static String casosEsp(String exp) {
 		if (exp.equals("=")) {
 			exp = "equal";

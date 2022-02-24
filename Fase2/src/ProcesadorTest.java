@@ -1,3 +1,14 @@
+/**
+ * 
+ * @author Manuel Alejandro Martínez Flores
+ * @author Mario Puente
+ * @author Pedro Marroquín
+ * 
+ * ProcesadorTest.
+ * Evalua las funciones del Procesador.
+ *
+ */
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -6,12 +17,14 @@ class ProcesadorTest {
 
 	@Test
 	void testRevisarParen() {
+		// Cantidad correcto de paréntesis
 		assert(Procesador.revisarParen("(a (c))"));
 		assert(!Procesador.revisarParen("(a (c)"));
 	}
 	
 	@Test
 	void testProcesarEX() {
+		// Creación de árboles de nodos
 		String s = "(a (c))";
 		Node se = Procesador.procesarEX(s);
 		assertEquals(se.getSE(), s);
@@ -34,6 +47,7 @@ class ProcesadorTest {
 	
 	@Test
 	void testFactorial() {
+		// Evalua declaración de función factorial
 		String s = "(defun factorial (n) (cond ((= n 0) 1) (T (* n (factorial (- n 1))))))";
 		Node se = Procesador.procesarEX(s);
 		s = "(defun factorial (n) (cond ((equal n 0) 1) (T (* n (factorial (- n 1))))))";
@@ -55,6 +69,7 @@ class ProcesadorTest {
 	
 	@Test
 	void testFibonacci() {
+		// Evalua declaración de función fibonacci
 		String s = "(defun fibonacci (n) (cond ((= n 1) 1) ((= n 2) 1) (T (+ (fibonacci (- n 1)) (fibonacci (- n 2))))))";
 		assertEquals(Procesador.evaluate(s), "T");
 		
@@ -73,24 +88,28 @@ class ProcesadorTest {
 	
 	@Test
 	void testQuote() {
+		// Evalua declaración Quote
 		String s = "\'(+ 1 2)";
 		assertEquals(Procesador.evaluate(s), "(+ 1 2)");
 	}
 	
 	@Test
 	void testCond() {
+		// Evalua declaración Cond
 		String s = "(cond ((= 0 1) 1) (T 2))";
 		assertEquals(Procesador.evaluate(s), "2");
 	}
 	
 	@Test
 	void testAtomList() {
+		// Evalua declaración Atom
 		String s = "(atom 1)";
 		assertEquals(Procesador.evaluate(s), "T");
 		
 		s = "(atom (+ 1 2))";
 		assertEquals(Procesador.evaluate(s), "T");
 		
+		// Evalua declaración List
 		s = "(atom (list 1 2))";
 		assertEquals(Procesador.evaluate(s), "NIL");
 	}
