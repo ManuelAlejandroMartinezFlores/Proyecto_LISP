@@ -19,7 +19,11 @@ public class Procesador {
 	 * @return resultado
 	 */
 	public static String evaluate(String expresion) {
-		return procesarEX(expresion).evaluate().getData();
+		try {
+			return procesarEX(expresion).evaluate().getData();
+		} catch (Exception e) {
+			return "ERROR";
+		}
 	}
 
 	/**
@@ -47,9 +51,12 @@ public class Procesador {
 	 * Convierte la expresión de texto en un árbol de Nodos
 	 * @param expresion
 	 * @return árbol de Nodos
+	 * @throws Exception 
 	 */
-	public static Node procesarEX(String expresion){
-		assert(Procesador.revisarParen(expresion));
+	public static Node procesarEX(String expresion) throws Exception{
+		if (!Procesador.revisarParen(expresion)) {
+			throw new Exception();
+		}
 		expresion = casosEsp(expresion);
 		ArrayList<Node> data = new ArrayList<Node>();
 		int inicio = 0;

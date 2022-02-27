@@ -25,46 +25,54 @@ class ProcesadorTest {
 	@Test
 	void testProcesarEX() {
 		// Creación de árboles de nodos
-		String s = "(a (c))";
-		Node se = Procesador.procesarEX(s);
-		assertEquals(se.getSE(), s);
-		
-		s = "(a (b) (c d))";
-		se = Procesador.procesarEX(s);
-		assertEquals(se.getSE(), s);
-		
-		s = "(defun sum (a) (+ a 1))";
-		se = Procesador.procesarEX(s);
-		assertEquals(se.getSE(), s);
-		assertEquals(se.evaluate().getData(), "T");
-		
-		s = "(sum 3)";
-		se = Procesador.procesarEX(s);
-		assertEquals(se.getSE(), s);
-		assertEquals(se.evaluate().getData(), "4");
+		try {
+			String s = "(a (c))";
+			Node se = Procesador.procesarEX(s);
+			assertEquals(se.getSE(), s);
+			
+			s = "(a (b) (c d))";
+			se = Procesador.procesarEX(s);
+			assertEquals(se.getSE(), s);
+			
+			s = "(defun sum (a) (+ a 1))";
+			se = Procesador.procesarEX(s);
+			assertEquals(se.getSE(), s);
+			assertEquals(se.evaluate().getData(), "T");
+			
+			s = "(sum 3)";
+			se = Procesador.procesarEX(s);
+			assertEquals(se.getSE(), s);
+			assertEquals(se.evaluate().getData(), "4");
+		} catch (Exception e) {
+			fail();
+		}
 	}
 	
 	
 	@Test
 	void testFactorial() {
 		// Evalua declaración de función factorial
-		String s = "(defun factorial (n) (cond ((= n 0) 1) (T (* n (factorial (- n 1))))))";
-		Node se = Procesador.procesarEX(s);
-		s = "(defun factorial (n) (cond ((equal n 0) 1) (T (* n (factorial (- n 1))))))";
-		assertEquals(se.getSE(), s);
-		assertEquals(se.evaluate().getData(), "T");
-		
-		s = "(factorial 0)";
-		se = Procesador.procesarEX(s);
-		assertEquals(se.getSE(), s);
-		assertEquals(se.evaluate().getData(), "1");
-		
-		s = "(factorial 5)";
-		se = Procesador.procesarEX(s);
-		assertEquals(se.getSE(), s);
-		assertEquals(se.evaluate().getData(), "120");
-		
-		assertEquals(Procesador.evaluate(s), "120");
+		try {
+			String s = "(defun factorial (n) (cond ((= n 0) 1) (T (* n (factorial (- n 1))))))";
+			Node se = Procesador.procesarEX(s);
+			s = "(defun factorial (n) (cond ((equal n 0) 1) (T (* n (factorial (- n 1))))))";
+			assertEquals(se.getSE(), s);
+			assertEquals(se.evaluate().getData(), "T");
+			
+			s = "(factorial 0)";
+			se = Procesador.procesarEX(s);
+			assertEquals(se.getSE(), s);
+			assertEquals(se.evaluate().getData(), "1");
+			
+			s = "(factorial 5)";
+			se = Procesador.procesarEX(s);
+			assertEquals(se.getSE(), s);
+			assertEquals(se.evaluate().getData(), "120");
+			
+			assertEquals(Procesador.evaluate(s), "120");
+		} catch (Exception e) {
+			fail();
+		}
 	}
 	
 	@Test

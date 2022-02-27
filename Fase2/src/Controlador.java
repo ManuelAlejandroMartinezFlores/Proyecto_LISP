@@ -25,11 +25,8 @@ public class Controlador {
 			if (exp.equals("Q")) {
 				break;
 			}
-			try {
-				vista.mostrarMensaje(Procesador.evaluate(exp));
-			} catch (Exception e) {
-				vista.mostrarMensaje("Error");
-			}
+			
+			vista.mostrarMensaje(Procesador.evaluate(exp));
 		} 
 		
 		vista.mostrarMensaje("\nCerrando...");
